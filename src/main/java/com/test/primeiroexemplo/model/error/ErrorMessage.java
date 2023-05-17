@@ -39,7 +39,4 @@ public class ErrorMessage {
   public void setMensagem(String mensagem) {
     this.mensagem = mensagem;
   }
-
-  
-
 }
