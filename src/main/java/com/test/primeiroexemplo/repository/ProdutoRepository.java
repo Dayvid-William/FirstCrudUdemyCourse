@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Repository;
 import com.test.primeiroexemplo.model.Produto;
+import com.test.primeiroexemplo.model.exception.ResourceNotFoundException;
 
 @Repository
 public class ProdutoRepository {
@@ -66,7 +67,7 @@ public class ProdutoRepository {
     Optional<Produto> produtoEncontrado = obterPorId(produto.getId());
 
     if(produtoEncontrado.isEmpty()){
-      throw new InputMismatchException("Produto não encontrado");
+      throw new ResourceNotFoundException("Produto não pode ser atualizado pois não existe");
     }
     // Eu tenho que remover o produto antigo da lista
     deletar(produto.getId());
@@ -75,5 +76,6 @@ public class ProdutoRepository {
     produtos.add(produto);
     
     return produto;
+    
   }
 }
