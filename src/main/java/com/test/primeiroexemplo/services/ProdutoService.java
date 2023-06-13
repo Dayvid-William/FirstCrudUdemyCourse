@@ -6,13 +6,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.test.primeiroexemplo.model.Produto;
-import com.test.primeiroexemplo.repository.ProdutoRepository;
+import com.test.primeiroexemplo.repository.ProdutoRepository_old;
 
 @Service
 public class ProdutoService {
   
   @Autowired
-  private ProdutoRepository produtoRepository;
+  private ProdutoRepository_old produtoRepository;
 
   /**
    * Metodo para retorna uma lista de produtos
