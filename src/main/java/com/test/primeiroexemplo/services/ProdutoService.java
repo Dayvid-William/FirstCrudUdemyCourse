@@ -6,13 +6,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.test.primeiroexemplo.model.Produto;
-import com.test.primeiroexemplo.repository.ProdutoRepository_old;
+import com.test.primeiroexemplo.repository.ProdutoRepository;
 
 @Service
 public class ProdutoService {
   
   @Autowired
-  private ProdutoRepository_old produtoRepository;
+  private ProdutoRepository produtoRepository;
 
   /**
    * Metodo para retorna uma lista de produtos
@@ -20,7 +20,7 @@ public class ProdutoService {
    */
   public List<Produto> obterTodos(){
     //Colocar Regra aqui caso tenha...
-    return produtoRepository.obterTodos();
+    return produtoRepository.findAll();
   }
 
   
@@ -30,7 +30,7 @@ public class ProdutoService {
    * @return Retorna um produto caso seja encontrado
    */
   public Optional<Produto> obterPorId(int id) {
-    return produtoRepository.obterPorId(id);
+    return produtoRepository.findById(id);
   }
 
   /**
@@ -40,7 +40,7 @@ public class ProdutoService {
    */
   public Produto adicionar(Produto produto) {
     // Poderia ter alguma regra de negocio para validar o produto.
-    return produtoRepository.adicionar(produto);
+    return produtoRepository.save(produto);
   }
 
   /**
@@ -49,7 +49,7 @@ public class ProdutoService {
    */
   public void deletar(int id) {
     //Poderia ter alguma logica de validação
-    produtoRepository.deletar(id);
+    produtoRepository.deleteById(id);
   }
 
   /**
@@ -62,7 +62,7 @@ public class ProdutoService {
     
     produto.setId(id);
 
-    return produtoRepository.atualizar(produto);
+    return produtoRepository.saveAndFlush(produto);
   }
 
 }
