@@ -59,7 +59,7 @@ public class ProdutoService {
    */
   public ProdutoDTO adicionar(ProdutoDTO produtoDto) {
     // Removendo o id para conseguir fazer cadastro.
-    produtoDto.setId((Integer) null);
+    produtoDto.setId(null);
     //Criar um objeto de mapeamento
     ModelMapper mapper = new ModelMapper();
     //Converter o produto dto em um produto
